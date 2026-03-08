@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I'm sorry  💕</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Starfield canvas -->
+  <canvas id="stars"></canvas>
+
+  <!-- Background blobs -->
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+
+
+  <!-- ═══════════════════════════════════════════
+       HEART OPENING ANIMATION
+       (plays after correct password)
+  ═══════════════════════════════════════════ -->
+  <div id="heartAnim">
+    <div class="heart-svg-wrap" id="heartWrap">
+
+      <div class="heart-glow"></div>
+
+      <!-- Left half of heart -->
+      <div class="heart-half" id="heartLeft">
+        <svg viewBox="0 0 220 210" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <clipPath id="clipL">
+              <rect x="0" y="0" width="110" height="210"/>
+            </clipPath>
+            <radialGradient id="gL" cx="35%" cy="35%" r="65%">
+              <stop offset="0%"   stop-color="#ffadd0"/>
+              <stop offset="100%" stop-color="#e0559a"/>
+            </radialGradient>
+          </defs>
+          <path clip-path="url(#clipL)"
+            d="M110,178 C55,142 7,102 7,58 C7,27 28,6 53,6 C72,6 90,17 110,39 C130,17 148,6 167,6 C192,6 213,27 213,58 C213,102 165,142 110,178Z"
+            fill="url(#gL)"/>
+        </svg>
+      </div>
+
+      <!-- Right half of heart -->
+      <div class="heart-half" id="heartRight">
+        <svg viewBox="0 0 220 210" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <clipPath id="clipR">
+              <rect x="110" y="0" width="110" height="210"/>
+            </clipPath>
+            <radialGradient id="gR" cx="65%" cy="35%" r="65%">
+              <stop offset="0%"   stop-color="#ffadd0"/>
+              <stop offset="100%" stop-color="#b044cc"/>
+            </radialGradient>
+          </defs>
+          <path clip-path="url(#clipR)"
+            d="M110,178 C55,142 7,102 7,58 C7,27 28,6 53,6 C72,6 90,17 110,39 C130,17 148,6 167,6 C192,6 213,27 213,58 C213,102 165,142 110,178Z"
+            fill="url(#gR)"/>
+        </svg>
+      </div>
+
+      <!-- Sparkle particles container -->
+      <div id="sparkBox" style="position:absolute;inset:0;pointer-events:none;overflow:visible;"></div>
+    </div>
+
+    <p class="heart-msg">My heart opens for you... ✨</p>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       SCREEN 1 — SECRET GATEWAY (Password)
+  ═══════════════════════════════════════════ -->
+  <div class="screen active" id="screen1">
+    <div class="card">
+
+      <!-- Lock icon -->
+      <div class="lock-wrap">
+        <svg class="lock-svg" viewBox="0 0 48 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="7" y="22" width="34" height="26" rx="6" fill="none" stroke="#ff6b9d" stroke-width="2.6"/>
+          <path d="M14 22V17A10 10 0 0 1 34 17v5" stroke="#ff6b9d" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+          <circle cx="24" cy="35" r="3.5" fill="#ff6b9d"/>
+          <line x1="24" y1="38" x2="24" y2="43" stroke="#ff6b9d" stroke-width="2.6" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <h1 class="s-title">Meri bubu 😘</h1>
+      <p class="s-sub">Batao mera dil kese khulega  💕</p>
+
+      <!--
+        ▼▼▼ CHANGE HINT TEXT — edit what's inside the <b> tag ▼▼▼
+      -->
+      <p class="hint">💡 Hint: <b>mera password 🥺</b></p>
+      <!-- ▲▲▲ END HINT ▲▲▲ -->
+
+      <div class="inp-wrap">
+        <input type="tel" id="codeInput" maxlength="8" placeholder="♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥" autocomplete="off"/>
+      </div>
+
+      <button class="btn" onclick="tryCode()">
+        <span>💗</span> I'm sorry 😭😭 <span>💗</span>
+      </button>
+
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       SCREEN 2 — HIDING SWEET
+       (appears after heart animation)
+  ═══════════════════════════════════════════ -->
+  <div class="screen" id="screen2">
+    <div class="card">
+      <span class="hiding-heart">💗</span>
+      <h1 class="s-title">Me tumse kuch kahna chahta hu 🥺<br>something ...</h1>
+      <p class="s-sub" style="line-height:1.75; margin-top:8px; margin-bottom:30px;">
+        Dekho me nahi jaanta hu ki kese pyaar kiya jata hai par <br>
+        Mujhse jese banta hai me tumhi se karta hu  💕
+      </p>
+      <button class="btn" onclick="startLetter()">
+        <span>💗</span>I'm sorry  <span>💗</span>
+      </button>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       SCREEN 3 — LOVE LETTER
+       (full screen, typewriter character-by-character)
+       Edit letter text inside script.js → LETTER array
+  ═══════════════════════════════════════════ -->
+  <div class="screen" id="screen3">
+    <div class="letter-scene">
+      <span class="letter-heart">💗</span>
+      <div class="letter-salutation" id="lSal"></div>
+      <div class="letter-para"       id="lP1"></div>
+      <div class="letter-para"       id="lP2"></div>
+      <div class="letter-para"       id="lP3"></div>
+      <div class="letter-para"       id="lP4"></div>
+      <div class="letter-sign"       id="lSign"></div>
+      <div class="lbtn-wrap"         id="lBtn">
+        <button class="btn" onclick="showScreen(3, 4)">
+          🎵 Listen to My Voice →
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       SCREEN 4 — VOICE MESSAGE
+  ═══════════════════════════════════════════ -->
+  <div class="screen" id="screen4">
+    <div class="card">
+      <div class="mic">🎙️</div>
+      <h1 class="s-title">mere dil ki aawaaz sun lo 😭 🎵</h1>
+      <p class="s-sub" style="margin-bottom:24px;">mene tumhare liye kuch record kiya hai, just for you 💕</p>
+
+      <!-- Play button -->
+      <button class="play-btn" id="playBtn" onclick="togglePlay()">
+        <svg viewBox="0 0 24 24" id="playIco"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+
+      <p class="audio-lbl" id="audioLbl">✨I'm sorry 😭</p>
+
+      <!-- Animated bars -->
+      <div class="audio-bars" id="audioBars">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+
+      <!--
+        ▼▼▼ CHANGE VOICE QUOTE — the text shown below the player ▼▼▼
+      -->
+      <p class="voice-quote">
+        "Dkho me nai jaanta ki me kesa hu mujhe nai pata ki mujhe kya pasand hai \n par mujhe pata hai ki tum meri kife me kya value rakhte ho \n
+        maan ja MOTI 🥺🥺"
+      </p>
+      <!-- ▲▲▲ END VOICE QUOTE ▲▲▲ -->
+
+      <!--
+        ▼▼▼ UPLOAD YOUR VOICE — click this button in the browser to add your .mp3 or .wav ▼▼▼
+      -->
+      <label class="upload-voice-btn" for="voiceUpload">🎤 Upload Your Voice Recording</label>
+      <input type="file" id="voiceUpload" accept="audio/*" style="display:none;" onchange="loadVoice(this)"/>
+      <!-- hidden audio element that plays the file -->
+      <audio id="voiceAudio" style="display:none;"></audio>
+      <!-- ▲▲▲ END VOICE UPLOAD ▲▲▲ -->
+
+      <button class="btn" onclick="showScreen(4, 5)">💝 KUCH DEKH BHI LO 🥹</button>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       SCREEN 5 — MEMORIES / PHOTO GALLERY
+  ═══════════════════════════════════════════ -->
+  <div class="screen" id="screen5">
+    <div class="card" style="max-width:430px;">
+      <div class="cam"></div>
+      <h1 class="s-title">Hamara saath me bitaya hua pal</h1>
+      <p class="s-sub" style="margin-bottom:0;">Tum jo aaye jindgi me ab or kuch nahi chahiye  ✨</p>
+
+      <div class="gallery">
+
+        <!-- ═══════════════════════════════════════
+             ▼▼▼ ADD PHOTOS — click ""
+                 on each slide when opened in browser
+             ▼▼▼ CHANGE CAPTIONS — edit the text
+                 inside each sl-cap div below
+        ═══════════════════════════════════════ -->
+
+        <!-- SLIDE 1 -->
+        <div class="slide active" id="slide0">
+          <div class="slide-bg" id="bg0" style="background-image: url('./images/Snapchat-883361162.jpg'); background-size: cover; background-position: center;"></div>
+          <div class="sl-emoji" id="em0"></div>
+          <label class="upload-photo-btn" for="photo0"></label>
+          <input type="file" id="photo0" accept="image/*" style="display:none;" onchange="loadPhoto(0, this)"/>
+          <div class="sl-cap" id="cap0"></div>
+        </div>
+
+        <!-- SLIDE 2 -->
+        <div class="slide" id="slide1">
+          <div class="slide-bg" id="bg0" style="background-image: url('./images/Snapchat-1098979791.jpg'); background-size: cover; background-position: center;"></div>
+          <div class="sl-emoji" id="em1"></div>
+          <label class="upload-photo-btn" for="photo1"></label>
+          <input type="file" id="photo1" accept="image/*" style="display:none;" onchange="loadPhoto(1, this)"/>
+          <div class="sl-cap" id="cap1"></div>
+        </div>
+
+        <!-- SLIDE 3 -->
+        <div class="slide" id="slide2">
+          <div class="slide-bg" id="bg0" style="background-image: url('./images/Snapchat-1796627788.jpg'); background-size: cover; background-position: center;"></div>
+          <div class="sl-emoji" id="em2"></div>
+          <label class="upload-photo-btn" for="photo2"></label>
+          <input type="file" id="photo2" accept="image/*" style="display:none;" onchange="loadPhoto(2, this)"/>
+          <div class="sl-cap" id="cap2"></div>
+        </div>
+
+        <!-- SLIDE 4 -->
+        <div class="slide" id="slide3">
+          <div class="slide-bg" id="bg0" style="background-image: url('./images/Snapchat-425538462.jpg'); background-size: cover; background-position: center;"></div>
+          <div class="sl-emoji" id="em3"></div>
+          <label class="upload-photo-btn" for="photo3"></label>
+          <input type="file" id="photo3" accept="image/*" style="display:none;" onchange="loadPhoto(3, this)"/>
+          <div class="sl-cap" id="cap3"></div>
+        </div>
+
+        <!-- SLIDE 5 -->
+        <div class="slide" id="slide4">
+         <div class="slide-bg" id="bg0" style="background-image: url('./images/Snapchat-860141496.jpg'); background-size: cover; background-position: center;"></div>
+          <div class="sl-emoji" id="em4"></div>
+          <label class="upload-photo-btn" for="photo4"></label>
+          <input type="file" id="photo4" accept="image/*" style="display:none;" onchange="loadPhoto(4, this)"/>
+          <div class="sl-cap" id="cap4"></div>
+        </div>
+
+        <!-- ▲▲▲ END SLIDES ▲▲▲ -->
+
+        <!-- Gallery navigation -->
+        <button class="g-nav g-prev" onclick="slide(-1)">‹</button>
+        <button class="g-nav g-next" onclick="slide(1)">›</button>
+      </div>
+
+      <!-- Dots -->
+      <div class="dots">
+        <div class="dot active" onclick="goSlide(0)"></div>
+        <div class="dot"        onclick="goSlide(1)"></div>
+        <div class="dot"        onclick="goSlide(2)"></div>
+        <div class="dot"        onclick="goSlide(3)"></div>
+        <div class="dot"        onclick="goSlide(4)"></div>
+      </div>
+
+      <p class="mem-foot">Bas sorry ke alawa kuch nahi kar sakta hu  agar ab bhi tumhara yahi faisla hai to phir me tumhe force nahi karuga na me kabhi jabardasti tumhari life me aaya or na hi me jabardasti rukna chahta hu  mera jo hoga me bo dekh loonga  bas tum khus rehna meri yahi dua hai bhagwaan se  
+        good byyy mera baccha 🥺 kyuki me na tumhe hurt or mere se gussa nahi dekh sakta hu jyada bhale hi mujhe tumhara gussa pasand ho par yar khus rahne bhi to accha hota hai  agar tumhe itna hi bura laga hai to me uske liye sorry hi bol sakta hu  baki tumhara faisla hai jo tumhe thik lage 👍👍👍👍</p>
+    </div>
+  </div>
+
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+
+</body>
+</html>

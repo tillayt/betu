@@ -170,17 +170,7 @@
       <p class="audio-lbl" id="audioLbl">✨I'm sorry 😭</p>
 
       <!-- Animated bars -->
-      <div class="audio-bars" id="audioBars">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-      </div>
-
+     
       <!--
         ▼▼▼ CHANGE VOICE QUOTE — the text shown below the player ▼▼▼
       -->
@@ -193,10 +183,8 @@
       <!--
         ▼▼▼ UPLOAD YOUR VOICE — click this button in the browser to add your .mp3 or .wav ▼▼▼
       -->
-      <label class="upload-voice-btn" for="voiceUpload">🎤 Upload Your Voice Recording</label>
-      <input type="file" id="voiceUpload" accept="audio/*" style="display:none;" onchange="loadVoice(this)"/>
-      <!-- hidden audio element that plays the file -->
-      <audio id="voiceAudio" style="display:none;"></audio>
+       <!-- hidden audio element that plays the file -->
+      <audio  src="./images/my.mp3" id="voiceAudio" style="display:none;"></audio>
       <!-- ▲▲▲ END VOICE UPLOAD ▲▲▲ -->
 
       <button class="btn" onclick="showScreen(4, 5)">💝 KUCH DEKH BHI LO 🥹</button>
@@ -224,46 +212,42 @@
 
         <!-- SLIDE 1 -->
         <div class="slide active" id="slide0">
-          <div class="slide-bg" id="bg0" style="background-image: url('./images/Snapchat-883361162.jpg'); background-size: cover; background-position: center;"></div>
+          <div class="slide-bg" id="bg0" style="background-image: url('./Snapchat-883361162.jpg'); background-size: cover; background-position: center;"></div>
           <div class="sl-emoji" id="em0"></div>
           <label class="upload-photo-btn" for="photo0"></label>
-          <input type="file" id="photo0" accept="image/*" style="display:none;" onchange="loadPhoto(0, this)"/>
+          
           <div class="sl-cap" id="cap0"></div>
         </div>
 
         <!-- SLIDE 2 -->
         <div class="slide" id="slide1">
-          <div class="slide-bg" id="bg0" style="background-image: url('./images/Snapchat-1098979791.jpg'); background-size: cover; background-position: center;"></div>
+          <div class="slide-bg" id="bg0" style="background-image: url('./Snapchat-1098979791.jpg'); background-size: cover; background-position: center;"></div>
           <div class="sl-emoji" id="em1"></div>
           <label class="upload-photo-btn" for="photo1"></label>
-          <input type="file" id="photo1" accept="image/*" style="display:none;" onchange="loadPhoto(1, this)"/>
-          <div class="sl-cap" id="cap1"></div>
+         <div class="sl-cap" id="cap1"></div>
         </div>
 
         <!-- SLIDE 3 -->
         <div class="slide" id="slide2">
-          <div class="slide-bg" id="bg0" style="background-image: url('./images/Snapchat-1796627788.jpg'); background-size: cover; background-position: center;"></div>
+          <div class="slide-bg" id="bg0" style="background-image: url('./Snapchat-1796627788.jpg'); background-size: cover; background-position: center;"></div>
           <div class="sl-emoji" id="em2"></div>
           <label class="upload-photo-btn" for="photo2"></label>
-          <input type="file" id="photo2" accept="image/*" style="display:none;" onchange="loadPhoto(2, this)"/>
-          <div class="sl-cap" id="cap2"></div>
+         <div class="sl-cap" id="cap2"></div>
         </div>
 
         <!-- SLIDE 4 -->
         <div class="slide" id="slide3">
-          <div class="slide-bg" id="bg0" style="background-image: url('./images/Snapchat-425538462.jpg'); background-size: cover; background-position: center;"></div>
+          <div class="slide-bg" id="bg0" style="background-image: url('./Snapchat-425538462.jpg'); background-size: cover; background-position: center;"></div>
           <div class="sl-emoji" id="em3"></div>
           <label class="upload-photo-btn" for="photo3"></label>
-          <input type="file" id="photo3" accept="image/*" style="display:none;" onchange="loadPhoto(3, this)"/>
           <div class="sl-cap" id="cap3"></div>
         </div>
 
         <!-- SLIDE 5 -->
         <div class="slide" id="slide4">
-         <div class="slide-bg" id="bg0" style="background-image: url('./images/Snapchat-860141496.jpg'); background-size: cover; background-position: center;"></div>
+         <div class="slide-bg" id="bg0" style="background-image: url('./Snapchat-860141496.jpg'); background-size: cover; background-position: center;"></div>
           <div class="sl-emoji" id="em4"></div>
           <label class="upload-photo-btn" for="photo4"></label>
-          <input type="file" id="photo4" accept="image/*" style="display:none;" onchange="loadPhoto(4, this)"/>
           <div class="sl-cap" id="cap4"></div>
         </div>
 
